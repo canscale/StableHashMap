@@ -1,8 +1,18 @@
 <!DOCTYPE html>
-<html><head title="Motoko docs"><meta charset="UTF-8"/><link href="styles.css" rel="stylesheet"/></head><div class="index-container"><h1 class="index-header">Index of modules</h1><ul class="index-listing"><li class="index-item"><a class="index-item-link" href="Library.html">Library</a><div class="index-item-comment"><p>A shiny new library</p>
-<p>Make it easy and fun to use your new library by including some module specific documentation here.
-It's always a good idea to include a minimal working example:</p>
-<pre class="motoko"><code class="motoko">import LibraryTemplate &quot;mo:library-template/Library&quot;;
-
-assert(LibraryTemplate.isPalindrome(&quot;anna&quot;));
-assert(not LibraryTemplate.isPalindrome(&quot;christoph&quot;));</code></pre></div></li></ul></div></html>
+<html><head title="Motoko docs"><meta charset="UTF-8"/><link href="styles.css" rel="stylesheet"/></head><div class="index-container"><h1 class="index-header">Index of modules</h1><ul class="index-listing"><li class="index-item"><a class="index-item-link" href="StableHashMap.html">StableHashMap</a><div class="index-item-comment"><p>Mutable hash map (aka Hashtable)</p>
+<p>This module is a direct deconstruction of the object oriented HashMap.mo class in motoko-base
+(https://github.com/dfinity/motoko-base/blob/master/src/HashMap.mo)
+into a series of functions and is meant to be persistent across updates, with the tradeoff 
+being larger function signatures.</p>
+<p>One of the main additions/difference between the two modules at this time besides class deconstruction
+is the differing initialization methods if an initialCapacity is known (to prevent array doubling 
+slowdown during map initialization)</p>
+<p>The rest of this documentation and code therefore follows directly from HashMap.mo, with minor
+modifications that do not attempt to change implementation. Please raise and issue if a
+discrepancy in implementation is found.</p>
+<p>The class is parameterized by the key's equality and hash functions,
+and an initial capacity.  However, as with the <code>Buffer</code> class, no array allocation
+happens until the first <code>set</code>.</p>
+<p>Internally, table growth policy is very simple, for now:
+ Double the current capacity when the expected bucket list size grows beyond a certain constant.</p>
+</div></li></ul></div></html>
