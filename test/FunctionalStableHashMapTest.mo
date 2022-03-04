@@ -1,7 +1,9 @@
 import Debug "mo:base/Debug";
-import HM "../src/StableHashMap";
+import HM "../src/FunctionalStableHashMap";
 import Hash "mo:base/Hash";
 import Text "mo:base/Text";
+
+Debug.print("functional stable");
 
 debug {
   let a = HM.init<Text, Nat>();

@@ -1,3 +1,4 @@
 default:
-	$(shell vessel bin)/moc $(shell vessel sources) -wasi-system-api -o Test.wasm StableHashMapTest.mo && wasmtime Test.wasm
-	rm -f Test.wasm
+	for file in *.mo; do \
+		$(shell vessel bin)/moc $(shell vessel sources) -wasi-system-api -o TestA.wasm "$$file" && wasmtime TestA.wasm && rm -f TestA.wasm; \
+	done
