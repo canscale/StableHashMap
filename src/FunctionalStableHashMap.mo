@@ -56,7 +56,7 @@ module {
   };  
 
   /// Returns the number of entries in this HashMap.
-  public func size(map: StableHashMap<Any, Any>): Nat {
+  public func size<K, V>(map: StableHashMap<K, V>): Nat {
     map._count;
   }; 
 
@@ -87,8 +87,6 @@ module {
       map.table[pos] := kvs2;
       switch(ov){
         case null { };
-        // case _ { map._count -= 1; }
-        // case _ { map._count -= 1; }
         case _ { map._count := map._count - 1; }
       };
       ov

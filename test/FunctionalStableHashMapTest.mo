@@ -7,6 +7,7 @@ Debug.print("functional stable");
 
 debug {
   let a = HM.init<Text, Nat>();
+  assert HM.size<Text, Nat>(a) == 0;
 
   func putHelper(map: HM.StableHashMap<Text, Nat>, t: Text, n: Nat): () {
     HM.put(map, Text.equal, Text.hash, t, n);
@@ -38,7 +39,9 @@ debug {
   putHelper(a, "AvocadO", 444);
 
   // need to resupply the constructor args; they are private to the object; but, should they be?
+  assert HM.size<Text, Nat>(a) == 12;
   let b = HM.clone<Text, Nat>(a, Text.equal, Text.hash);
+  assert HM.size<Text, Nat>(b) == 12;
 
   // ensure clone has each key-value pair present in original
   for ((k,v) in HM.entries(a)) {
@@ -82,7 +85,9 @@ debug {
     case null { assert false };
     case (?three) { assert three == 3 };
   };
+  assert HM.size<Text, Nat>(a) == 11;
   deleteHelper(a, "avocado");
+  assert HM.size<Text, Nat>(a) == 10;
 
   // check them:
   switch (getHelper(a, "apple")) {
@@ -114,6 +119,7 @@ debug {
   putHelper(a, "banana", 2);
   putHelper(a, "pear", 3);
   putHelper(a, "avocado", 4);
+  assert HM.size<Text, Nat>(a) == 12;
 
   // ensure clone has each key-value pair present in original
   for ((k,v) in HM.entries(a)) {
@@ -162,4 +168,5 @@ debug {
     case null { };
     case (?_) { assert false };
   };
+  assert HM.size<Text, Nat>(d) == 0;
 };
