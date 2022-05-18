@@ -25,3 +25,9 @@ Two different StableHashMap implementations are accessible via this module.
   One of the main additions/difference between the two modules at this time besides class deconstruction
   is the differing initialization methods if an initialCapacity is known (to prevent array doubling 
   slowdown during map initialization)
+
+
+## License
+StableHashMap is distributed under the terms of the Apache License (Version 2.0).
+
+See LICENSE for details.
